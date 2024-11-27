@@ -62,4 +62,4 @@ AcrImageBuilder:
     # 采用与image_name相同的repoName
     RepoName: linziqiaolzq_quickstart-metabase-dockerfile
     Tag: latest
-    DockerBuildArgs: [{'ParameterValue': 'latest', 'Name': 'VERSION'}]
+    DockerBuildArgs: [{'ArgumentValue': 'latest', 'ArgumentName': 'VERSION'}]
