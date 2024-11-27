@@ -1,0 +1,65 @@
+Service:
+  RegionId: cn-hangzhou
+  DeployType: ros
+  DeployMetadata:
+    SupplierDeployMetadata:
+      AcrImageArtifactRelation:
+        # 相应的，ros模板中也需要采用该伪参数
+        '{{ computenest::acrimage::linziqiaolzq_quickstart-metabase-dockerfile }}':
+          ArtifactId: ${Artifact.Artifact_1.ArtifactId}
+          ArtifactVersion: ${Artifact.Artifact_1.ArtifactVersion}
+    TemplateConfigs:
+      - Name: ECS单机版
+        Url: 'ros_templates/template.yaml'
+        # 未选择部署地域则采用 []
+        AllowedRegions:
+          - cn-qingdao
+          - cn-beijing
+          - cn-zhangjiakou
+          - cn-huhehaote
+          - cn-wulanchabu
+          - cn-wulanchabu-acdr-1
+          - cn-hangzhou
+          - cn-shanghai
+          - cn-nanjing
+          - cn-shenzhen
+          - cn-heyuan
+          - cn-guangzhou
+          - cn-fuzhou
+          - cn-wuhan-lr
+          - cn-chengdu
+          - cn-hongkong
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-southeast-1
+          - ap-southeast-3
+          - ap-southeast-6
+          - ap-southeast-5
+          - ap-southeast-7
+          - us-east-1
+          - us-west-1
+          - eu-west-1
+          - eu-central-1
+          - me-east-1
+  ServiceType: private
+  ServiceInfo:
+    Locale: zh-CN
+    ShortDescription: demo
+    Image: 'resources/icons/service_logo.png'
+Artifact:
+  Artifact_1:
+    ArtifactType: AcrImage
+    # 采用与image_name相同的ArtifactName
+    ArtifactName: linziqiaolzq_quickstart-metabase-dockerfile
+    ArtifactProperty:
+      RepoName: ${AcrImageBuilder.AcrImage_1.RepoName}
+      Tag: ${AcrImageBuilder.AcrImage_1.Tag}
+      RepoType: Private
+AcrImageBuilder:
+  AcrImage_1:
+    # dockerfile路径
+    DockerFilePath: Dockerfile
+    # 采用与image_name相同的repoName
+    RepoName: linziqiaolzq_quickstart-metabase-dockerfile
+    Tag: latest
+    DockerBuildArgs: [{'ParameterValue': 'latest', 'Name': 'VERSION'}]
