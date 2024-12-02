@@ -1,6 +1,20 @@
 Service:
   RegionId: cn-hangzhou
   DeployType: ros
+  OperationMetadata:
+    ModifyParametersConfig:
+      - TemplateName: 单机版
+        Operation:
+          - Name: 变更ECS实例规格
+            Description: 变更ECS实例规格
+            Type: Custom
+            Parameters:
+              - EcsInstanceType
+          - Name: 变更ECS实例密码
+            Description: 变更ECS实例密码
+            Type: Custom
+            Parameters:
+              - InstancePassword
   DeployMetadata:
     SupplierDeployMetadata:
       AcrImageArtifactRelation:
@@ -13,9 +27,34 @@ Service:
         Url: 'ros_templates/template.yaml'
         # 未选择部署地域则采用 []
         AllowedRegions:
+          - cn-qingdao
+          - cn-beijing
+          - cn-zhangjiakou
+          - cn-huhehaote
+          - cn-wulanchabu
           - cn-hangzhou
           - cn-shanghai
-          - cn-beijing
+          - cn-shanghai-cloudspe
+          - cn-nanjing
+          - cn-shenzhen
+          - cn-heyuan
+          - cn-guangzhou
+          - cn-fuzhou
+          - cn-wuhan-lr
+          - cn-chengdu
+          - cn-hongkong
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-southeast-1
+          - ap-southeast-3
+          - ap-southeast-6
+          - ap-southeast-5
+          - ap-southeast-7
+          - us-east-1
+          - us-west-1
+          - eu-west-1
+          - eu-central-1
+          - me-east-1
   ServiceType: private
   ServiceInfo:
     Locale: zh-CN
