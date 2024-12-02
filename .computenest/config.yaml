@@ -3,7 +3,7 @@ Service:
   DeployType: ros
   OperationMetadata:
     ModifyParametersConfig:
-      - TemplateName: 单机版
+      - TemplateName: ECS单机版
         Operation:
           - Name: 变更ECS实例规格
             Description: 变更ECS实例规格
