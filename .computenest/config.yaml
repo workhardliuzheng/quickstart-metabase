@@ -1,6 +1,20 @@
 Service:
   RegionId: cn-hangzhou
   DeployType: ros
+  OperationMetadata:
+    ModifyParametersConfig:
+      - TemplateName: ECS单机版
+        Operation:
+          - Name: 变更ECS实例规格
+            Description: 变更ECS实例规格
+            Type: Custom
+            Parameters:
+              - EcsInstanceType
+          - Name: 变更ECS实例密码
+            Description: 变更ECS实例密码
+            Type: Custom
+            Parameters:
+              - InstancePassword
   DeployMetadata:
     SupplierDeployMetadata:
       AcrImageArtifactRelation:
@@ -18,8 +32,10 @@ Service:
           - cn-zhangjiakou
           - cn-huhehaote
           - cn-wulanchabu
+          - cn-zhengzhou-jva
           - cn-hangzhou
           - cn-shanghai
+          - cn-shanghai-cloudspe
           - cn-nanjing
           - cn-shenzhen
           - cn-heyuan
@@ -40,6 +56,7 @@ Service:
           - eu-west-1
           - eu-central-1
           - me-east-1
+          - me-central-1
   ServiceType: private
   ServiceInfo:
     Locale: zh-CN
